@@ -4,11 +4,20 @@
 
 <h1>To work with a single Question</h1>
 
-{% for comment in question.comments.all  %}
+{% comment %} <!-- {% for comment in question.comments.all  %} --> {% endcomment %}
 
-<h1>{{ comment.for_question.title }}</h1>
+{% for comment in questions.comments.all  %}
+
+<h2>{{comment.for_question}}</h2>
+<h1>{{ comment.title }}</h1>
 
 <h1>{{ comment.comment_body }}</h1>
+
+<p> {% if comment.is_accepted %} 
+    <h2>accepted answer</h2>
+    {% endif %}
+
+</p>
 
 {% endfor %}
 

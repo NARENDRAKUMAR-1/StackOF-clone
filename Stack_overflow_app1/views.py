@@ -32,9 +32,9 @@ class QuestionListView(ListView):
 
 
 class CommunityCommentsView(DetailView):
-    context_object_name = 'comments'  #many questions
+    context_object_name = 'questions'  #many questions
     #  context_object_name  keep this name as it is
-    model = community_comments
+    model = Question
     template_name = 'Stack_overflow_app1/question.html'
 
 

@@ -43,10 +43,12 @@ class Question(models.Model):
 
 # // commnets and replies handling
 class community_comments(models.Model):
-    for_question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='question' )
+    for_question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='comments' )
     comment_body = models.TextField(max_length = 1000)
     comment_by = models.ForeignKey(user_profile, on_delete=models.CASCADE)
     comment_date = models.DateTimeField(auto_now_add = True)
+
+    # question = models.ForeignKey(Question, on_delete=models.CASCAS)
 
     is_accepted = models.BooleanField()  # if the answer/comment is accepted
 

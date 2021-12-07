@@ -14,4 +14,8 @@ urlpatterns = [
 
     path('/<slug:slug>/', views.CommunityCommentsView.as_view(), name='comments')
 
+
+
 ]
+
+
