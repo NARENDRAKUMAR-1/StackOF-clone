@@ -2,13 +2,13 @@ Running the project in local system
 
 #1 
 clone the project in needed directory
-git clone <HTTP git link>
+git clone (HTTP git link)
 
 #2
 create a venv and activate 
-python -m venv <venvname>
+python -m venv (venvname)
 
-<venvname>/Scripts/activate
+(venvname)/Scripts/activate
 
 #3
 
