@@ -1,0 +1,16 @@
+{% extends "welcome.html" %}
+
+{% block content %}
+
+<h1>Questions content here </h1>
+
+{% for question in questions %}
+
+<h1>{{question.title}}</h1>
+<h2>{{question.body}}</h2>
+
+<a href="{% url 'Stack_overflow_app1:comments' slug=question.slug  %}"> Get the Question </a>
+
+{% endfor %}
+
+{% endblock  %}

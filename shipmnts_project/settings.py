@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'Stack_overflow_app1',
+    'taggit'
 
 ]
 

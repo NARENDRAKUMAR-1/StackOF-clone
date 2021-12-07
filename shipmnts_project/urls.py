@@ -18,9 +18,13 @@ from django.urls import path, include
 
 import Stack_overflow_app1
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', include("Stack_overflow_app1.urls"))
+    path('', include('app1.urls')),
+    
+
+    path('quest', include("Stack_overflow_app1.urls")),
 
 ]

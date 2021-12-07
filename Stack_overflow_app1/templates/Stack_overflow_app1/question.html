@@ -1,0 +1,15 @@
+{% extends "welcome.html" %}
+
+{% block content %}
+
+<h1>To work with a single Question</h1>
+
+{% for comment in question.comments.all  %}
+
+<h1>{{ comment.for_question.title }}</h1>
+
+<h1>{{ comment.comment_body }}</h1>
+
+{% endfor %}
+
+{% endblock  %}
