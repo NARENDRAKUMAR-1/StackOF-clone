@@ -24,26 +24,25 @@
 <body>
 
   <div class="container-fluid">
-    <h1>Welcome to the StackOverFlow Developer Community</h1>
+    <h1>Welcome to the StackOverFlow Developer Community</h1><br>
 
-    <h2>View all the Questions </h2>
+    <h2>View all the Questions </h2><br>
 
-
+    <a href="{% url 'welcome' %}"> Home </a> <br>
 
     <a href="{% url 'Stack_overflow_app1:register' %}"> Register </a>
 
-
+<br>
     <!-- show logout option only when logged in -->
     {% if user.is_authenticated %}
     <a href="{% url 'Stack_overflow_app1:user_logout' %}"> Logout</a>
     {% else %}
     <a href="{% url 'Stack_overflow_app1:user_login' %}"> Login </a>
     {% endif %}
+<br>
+    <a href="/admin/"> Admin Page </a>
 
-    {% comment %} <a href="{% url 'Stack_overflow_app1:admin:index' %}"> Admin Page </a> {% endcomment %}
-
-    {% comment %}
-    <!-- <a href="/q/">view</a> --> {% endcomment %}
+   <br>
 
     <a href="{% url 'Stack_overflow_app1:question_list' %}"> get Questions </a>
 

@@ -6,19 +6,34 @@
 
 {% comment %} <!-- {% for comment in question.comments.all  %} --> {% endcomment %}
 
+
+{% for comment in questions.comments.all|slice:":1"  %}
+
+
+<h1>{{comment.for_question}}</h1>
+{% comment %} to prnt the Question just once {% endcomment %}
+
+
+{% endfor %}
+<br>
+
+
 {% for comment in questions.comments.all  %}
 
-<h2>{{comment.for_question}}</h2>
+{% comment %} <h2>{{comment.for_question}}</h2> {% endcomment %}
 <h1>{{ comment.title }}</h1>
 
-<h1>{{ comment.comment_body }}</h1>
-
-<p> {% if comment.is_accepted %} 
-    <h2>accepted answer</h2>
+<div>
+<h2><h1>#{{ comment.comment_body }}  </h1>
+     {% if comment.is_accepted %} 
+    <h3>accepted answer</h3>
     {% endif %}
 
-</p>
+ </h2>
 
+
+</div>
+<br>
 {% endfor %}
 
 {% comment %} <a href="{% url 'Stack_overflow_app1:question_create' question=questions.question.slug slug=question.slug %}">  {% endcomment %}
