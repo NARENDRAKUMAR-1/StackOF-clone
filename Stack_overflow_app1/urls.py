@@ -20,6 +20,10 @@ urlpatterns = [
     path('user_logout', views.user_logout, name='user_logout'),
 
 
+    # path('<str:question>/<str:slug>/create/', views.AnswerCreateView.as_view(), name='question_create'),
+    path('<str:slug>/create/', views.AnswerCreateView.as_view(), name='question_create'),
+
+
 
 ]
 

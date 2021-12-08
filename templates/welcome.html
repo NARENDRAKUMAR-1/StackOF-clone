@@ -11,18 +11,25 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <title>Shipmnts Test</title>
+
+  <style>
+    .comtainer-fluid{
+      /* align-items: center; */
+      width: 50%;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 
 <body>
 
-  <div>
+  <div class="container-fluid">
     <h1>Welcome to the StackOverFlow Developer Community</h1>
 
     <h2>View all the Questions </h2>
 
 
-    {% comment %} <!-- <a href="{% url 'app1:welcome' %}"> Home </a> -->
-    <!-- <a href="{% url 'user_login' %}"> Login </a> --> {% endcomment %}
+
     <a href="{% url 'Stack_overflow_app1:register' %}"> Register </a>
 
 

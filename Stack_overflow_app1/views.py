@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.views.generic import (ListView, DetailView, FormView, CreateView)  # for questions and comments
 
 from . models import user_profile, Question, community_comments
-from . forms import community_commentsForm
+from . forms import community_commentsForm, QuestionForm
 
 # import reverse_lazy
 from django.urls import reverse_lazy
@@ -46,38 +46,6 @@ class CommunityCommentsView(DetailView):
     #  context_object_name  keep this name as it is
     model = Question
     template_name = 'Stack_overflow_app1/question.html'
-
-
-'''
-#  CRUD part
-class QuestionCreateView(CreateView):
-    form_class =  LessonForm
-    context_object_name = 'subject'
-    model = Subject
-    template_name = 'app2_courses/lesson_create.html'
-
-
-    # override the default form_valid function of the CreateView class as per our need
-    # and store the inputs in our db
-
-
-    def get_success_url(self):
-        self.object = self.get_object()
-        standard = self.object.standard
-        return reverse_lazy('app2_courses:lesson_list',
-        kwargs={'standard':standard.slug, 'slug':self.object.slug})  # ??
-    
-    def form_valid(self, form, *args, **kwargs):
-        self.object = self.get_object()
-        fm = form.save(commit=False)
-        fm.created_by = self.request.user
-        fm.Standard = self.object.standard
-        fm.subject = self.object
-        fm.save()
-        return HttpResponseRedirect(self.get_success_url())
-
-'''
-
 
 
 
@@ -123,14 +91,15 @@ def register(request):
 
 
 def user_login(request):
+
     # '''
     if(request.method == 'POST'):
         username =request.POST.get('username')
         password =request.POST.get('password')
 
-
         # //use inbuilt functionality for authentication
         user = authenticate(username = username, password=password)
+        # user = authenticate(username = username)
 
         if user: # authenticated
             if user.is_active:
@@ -148,18 +117,26 @@ def user_login(request):
 # '''
 
 
+# login just with the username
 '''
     if request.method == 'POST':
             userinput = request.POST['username']
 
             try:
-                username = userbase.objects.get(email=userinput).username
-            except userbase.DoesNotExist:
+                username = user_profile.objects.get(user=userinput).username
+                return HttpResponseRedirect(reverse('welcome'))
+            except user_profile.DoesNotExist:
                 username = request.POST['username']
+                return HttpResponse("Please Enter correct Credentials or Register Again")
+
+            else:
+                return HttpResponse("Please Enter correct Username, can't find the username in records")
             password = request.POST['password']
 
-            return render(request, 'login.html')
-'''
+    
+    
+    return render(request, 'Stack_overflow_app1/login.html')
+'''   
 
 # @login_required #decorator by django
 # check if user is logged out
@@ -167,3 +144,41 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('welcome'))
+
+
+
+
+
+
+
+# '''
+#  CRUD part
+class AnswerCreateView(CreateView):
+    form_class =  community_commentsForm
+    context_object_name = 'question'
+    model = community_comments
+    template_name = 'Stack_overflow_app1/question_create.html'
+
+
+    # override the default form_valid function of the CreateView class as per our need
+    # and store the inputs in our db
+
+
+    def get_success_url(self):
+        self.object = self.get_object()
+        question = self.object.question
+        return reverse_lazy('Stack_overflow_app1:question',
+        kwargs={'question':question.slug, 'slug':self.object.slug})  # ??
+    
+    def form_valid(self, form, *args, **kwargs):
+        self.object = self.get_object()
+        fm = form.save(commit=False)
+        # fm.created_by = self.request.user
+        fm.question = self.object.question
+        fm.subject = self.object
+        fm.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+# '''
+
+

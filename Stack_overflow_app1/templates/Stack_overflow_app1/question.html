@@ -21,4 +21,8 @@
 
 {% endfor %}
 
+{% comment %} <a href="{% url 'Stack_overflow_app1:question_create' question=questions.question.slug slug=question.slug %}">  {% endcomment %}
+
+{% comment %} <a href="{% url 'Stack_overflow_app1:question_create' slug=question.slug %}"> Add a new Answer </a> {% endcomment %}
+
 {% endblock  %}
