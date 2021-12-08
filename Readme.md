@@ -24,3 +24,6 @@ pip install -r requirements.txt
 #5
 Run the server
 python manage.py runserver
+
+
+user1/Password@123  

@@ -14,12 +14,9 @@ from django.contrib.auth.models import User # django default User model
 class user_profile(models.Model):
     user = models.OneToOneField( User, on_delete = models.CASCADE )
     user_bio = models.CharField(max_length = 200, blank = True)
-    slug = models.SlugField(null=True, blank=True)
-
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.user.username
 
 
 # // model for the questions and comments

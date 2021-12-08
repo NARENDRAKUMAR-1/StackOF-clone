@@ -1,0 +1,24 @@
+{% extends "welcome.html" %}
+
+{% block content %}
+
+{% if registered %}
+
+<h1> Registered Successfully </h1>
+
+{% else %}
+<h1>Please Register below </h1>
+
+<form action="#" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{user_form}}
+    
+    <!-- will be sent through context here -->
+
+    <input type="submit" value="Register" class="btn btn-primary btn-block">
+
+</form>
+
+{% endif %}
+
+{% endblock %}
